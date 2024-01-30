@@ -1001,6 +1001,8 @@ class VariantSelects extends HTMLElement {
   }
 
   updateURL() {
+    // stop product url change when select any variable
+    return;
     if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
     window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
   }
@@ -1264,3 +1266,15 @@ class ProductRecommendations extends HTMLElement {
 }
 
 customElements.define('product-recommendations', ProductRecommendations);
+
+
+class CustomSelect extends HTMLElement {
+  constructor() {
+    super();
+    this.addEventListener('change', this.onVariantChange)
+  }
+  onVariantChange(e){
+    document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
+  }
+}
+customElements.define('custom-select', CustomSelect)
