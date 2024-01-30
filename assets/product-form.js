@@ -123,13 +123,13 @@ function getCartItems(){
   fetch(window.Shopify.routes.root + 'cart.js')
       .then((response) => response.json())
       .then( data => {
-        const cartItemTitle = data.items.map(item => item.product_title);
+        //const cartItemTitle = data.items.map(item => item.product_title);
         const cartItemIds = data.items.map(item => item.id);
 
 
         console.log(data)
 
-        if(cartItemTitle.includes("Handbag") && !cartItemIds.includes(45017643286780)){
+        if(cartItemIds.includes(45020005630204) && !cartItemIds.includes(45017643286780)){
 
           let cartData = {
             items: [

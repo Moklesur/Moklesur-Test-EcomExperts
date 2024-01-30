@@ -985,7 +985,12 @@ class VariantSelects extends HTMLElement {
     });
   }
 
-  updateMedia() {
+  updateMedia(e) {
+
+    console.log(this.currentVariant.featured_media.alt)
+
+    //document.querySelectorAll('.thumbnail-list__item').
+
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;
 

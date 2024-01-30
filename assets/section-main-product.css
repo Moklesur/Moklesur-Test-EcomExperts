@@ -1598,3 +1598,9 @@ a.product__text {
     border: none;
   }
 }
+
+
+/* product thumb class  */
+.thumbnail-list .hide {
+  display: none;
+}

@@ -170,9 +170,9 @@ class CartItems extends HTMLElement {
         console.log(parsedState)
 
         // geting product title for cart
-        const cartItemTitle = parsedState.items.map(item => item.product_title);
+        const cartItemIds = parsedState.items.map(item => item.id);
         // automatically remove Soft Winter Jacket product
-        if(!cartItemTitle.includes("Handbag")){
+        if(!cartItemIds.includes(45020005630204)){
           document.getElementById('hide-product-removed-js').click();
         }
 
