@@ -986,13 +986,22 @@ class VariantSelects extends HTMLElement {
   }
 
   updateMedia(e) {
-
-    console.log(this.currentVariant.featured_media.alt)
-
-    //document.querySelectorAll('.thumbnail-list__item').
-
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;
+
+    // Get the current radio button value
+    const currentVariant = this.currentVariant.featured_media.alt;
+    // Get all divs
+    const thumbnailList = document.querySelectorAll('.thumbnail-list__item');
+    // Hide all divs
+    thumbnailList.forEach(div => {
+      div.classList.add('hide');
+    });
+    // Show the div corresponding to the selected radio button
+    const currentVariantDiv = document.querySelectorAll(`[data-img-alt="${currentVariant}"]`);
+    currentVariantDiv.forEach(div => {
+      div.classList.remove('hide');
+    });
 
     const mediaGalleries = document.querySelectorAll(`[id^="MediaGallery-${this.dataset.section}"]`);
     mediaGalleries.forEach((mediaGallery) =>
