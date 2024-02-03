@@ -1319,11 +1319,13 @@ class CustomSelect extends HTMLElement {
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
-      addButtonText.textContent = window.variantStrings.addToCart;
+      addButtonText.textContent = text || window.variantStrings.addToCart;
     }
 
     if (!modifyClass) return;
+    // Add or remove classes based on the condition
   }
 }
 
 customElements.define('custom-select', CustomSelect);
+
