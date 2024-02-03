@@ -961,6 +961,8 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
+    this.customSelect === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+
     console.log(this.customSelect);
     console.log(this.currentVariant);
     console.log(this.currentVariant.title);
