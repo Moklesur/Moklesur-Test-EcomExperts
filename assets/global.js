@@ -1301,13 +1301,16 @@ class CustomSelect extends HTMLElement {
   }
 
   connectedCallback() {
-    this.select.value == '' && this.disableCartButton();
+    this.select.value === '' && CustomSelect.disableCartButton();
   }
 
   static disableCartButton() {
-    this.cartButton = document.querySelector('.js-add-cart');
-    !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
+    const cartButton = document.querySelector('.js-add-cart');
+    if (cartButton && !cartButton.hasAttribute('disabled')) {
+      cartButton.setAttribute('disabled', '');
+    }
   }
 }
 
 customElements.define('custom-select', CustomSelect);
+
