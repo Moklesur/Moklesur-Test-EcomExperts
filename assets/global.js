@@ -945,6 +945,24 @@ class SlideshowComponent extends SliderComponent {
 
 customElements.define('slideshow-component', SlideshowComponent);
 
+class CustomSelect extends HTMLElement {
+  constructor() {
+    super();
+
+    this.disableCartButton = function(select) {
+      this.select = this.querySelector('select');
+      this.cartButton = document.querySelector('.js-add-cart');
+      !this.cartButton.hasAttribute('disabled') ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
+    };
+  }
+
+  connectedCallback() {
+    this.disableCartButton();
+  }
+}
+
+customElements.define('custom-select', CustomSelect);
+
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
@@ -1296,21 +1314,3 @@ customElements.define('product-recommendations', ProductRecommendations);
 // }
 
 // customElements.define('custom-select', CustomSelect);
-
-class CustomSelect extends HTMLElement {
-  constructor() {
-    super();
-
-    this.disableCartButton = function(select) {
-      this.select = this.querySelector('select');
-      this.cartButton = document.querySelector('.js-add-cart');
-      !this.cartButton.hasAttribute('disabled') ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
-    };
-  }
-
-  connectedCallback() {
-    this.disableCartButton();
-  }
-}
-
-customElements.define('custom-select', CustomSelect);
