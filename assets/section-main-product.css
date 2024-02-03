@@ -1606,6 +1606,8 @@ a.product__text {
 
 /* custom styles */
 .product .product-form__input input[type=radio] + label {
+  width: 6rem;
+  height: 6rem;
   padding: 0.2rem;
 }
 
