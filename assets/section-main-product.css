@@ -1605,7 +1605,13 @@ a.product__text {
 }
 
 /* custom styles */
+.product .product-form__input input[type=radio] + label {
+  padding: 0.2rem;
+}
+
 .product .product-form__input input[type=radio] + label > img {
+  width: 100%;
+  height: 100%;
   border-radius: calc(var(--variant-pills-radius) - 0.2rem);
 }
 
