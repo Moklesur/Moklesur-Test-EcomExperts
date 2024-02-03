@@ -968,7 +968,7 @@ class VariantSelects extends HTMLElement {
 
     if (!this.currentVariant) {
       if(this.customSelect === '') {
-
+        this.setUnavailable();
       } else {
         this.toggleAddButton(true, '', true);
         this.setUnavailable();
