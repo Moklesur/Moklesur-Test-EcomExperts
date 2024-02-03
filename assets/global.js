@@ -954,7 +954,7 @@ class VariantSelects extends HTMLElement {
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(true, '', false);
+    // this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
@@ -963,7 +963,7 @@ class VariantSelects extends HTMLElement {
     console.log(this.currentVariant.title);
 
     if (!this.currentVariant) {
-      // this.toggleAddButton(true, '', true);
+      this.toggleAddButton(true, '', true);
       this.setUnavailable();
     } else {
       this.updateMedia();
