@@ -972,7 +972,7 @@ class VariantSelects extends HTMLElement {
       this.updateURL();
       this.updateVariantInput();
       // Disable add to cart button when custom select is unselected
-      // Look for 'this.toggleAddButton' to update the requirements of the statement
+      // Look for 'this.toggleAddButton' to update the requirements of the statement or declaration
       this.renderProductInfo.bind(this);
       this.updateShareUrl();
     }
