@@ -990,9 +990,10 @@ class VariantSelects extends HTMLElement {
   }
 
   onVariantChange() {
+    const variantSelected = this.select.value === '';
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(true, '', false);
+    this.toggleAddButton(variantSelected, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
