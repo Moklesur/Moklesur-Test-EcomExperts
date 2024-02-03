@@ -1301,6 +1301,10 @@ class CustomSelect extends HTMLElement {
   }
 
   connectedCallback() {
+    this.select.value == '' && this.disableCartBuy();
+  }
+
+  disableCartBuy() {
 
   }
 }
