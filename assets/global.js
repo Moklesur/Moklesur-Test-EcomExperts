@@ -986,7 +986,7 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.select = this.querySelector('select');
-    this.variantSelected = !this.select.value === '';
+    this.variantSelected = this.select.value === '';
     this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
