@@ -950,7 +950,6 @@ class CustomSelect extends HTMLElement {
     super();
 
     this.disableCartButton = function() {
-      this.select = this.querySelector('select');
       this.cartButton = document.querySelector('.js-add-cart');
       (this.select.value == '' || this.select.value == null) ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
       console.log(this.select);
@@ -986,7 +985,7 @@ const myCustomSelect = new CustomSelect();
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.customSelect = myCustomSelect;
+    this.select = this.querySelector('select');
     this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
