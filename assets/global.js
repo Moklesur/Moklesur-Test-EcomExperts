@@ -961,6 +961,9 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
+    // Disable add to cart button when custom select is unselected
+    this.customSelect === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
       this.setUnavailable();
@@ -970,12 +973,9 @@ class VariantSelects extends HTMLElement {
       this.updateVariantInput();
       // Disable add to cart button when custom select is unselected
       // Look for 'this.toggleAddButton' to update the requirements of the first boolean variable
-      this.renderProductInfo();
+      this.renderProductInfo.bind(this);
       this.updateShareUrl();
     }
-
-    // Disable add to cart button when custom select is unselected
-    this.customSelect === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
   }
 
   updateOptions() {
@@ -1145,7 +1145,7 @@ class VariantSelects extends HTMLElement {
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
         this.toggleAddButton(
-          addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true,
+          addButtonUpdated || this.customSelect === '' ? addButtonUpdated.hasAttribute('disabled') : true,
           window.variantStrings.soldOut
         );
 
