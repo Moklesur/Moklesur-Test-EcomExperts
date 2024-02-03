@@ -1222,7 +1222,6 @@ customElements.define('variant-selects', VariantSelects);
 class VariantRadios extends VariantSelects {
   constructor() {
     super();
-    this.variantSelected = this.querySelector('select').value === '';
   }
 
   setInputAvailability(listOfOptions, listOfAvailableOptions) {
@@ -1238,27 +1237,8 @@ class VariantRadios extends VariantSelects {
   updateOptions() {
     const fieldsets = Array.from(this.querySelectorAll('fieldset'));
     this.options = fieldsets.map((fieldset) => {
-      Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
-      this.toggleAddButton(this.variantSelected, '', false);
+      return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
     });
-  }
-
-  toggleAddButton(disable = true, text, modifyClass = true) {
-    const productForm = document.getElementById(`product-form-${this.dataset.section}`);
-    if (!productForm) return;
-    const addButton = productForm.querySelector('[name="add"]');
-    const addButtonText = productForm.querySelector('[name="add"] > span');
-    if (!addButton) return;
-
-    if (disable) {
-      addButton.setAttribute('disabled', 'disabled');
-      if (text) addButtonText.textContent = text;
-    } else {
-      addButton.removeAttribute('disabled');
-      addButtonText.textContent = window.variantStrings.addToCart;
-    }
-
-    if (!modifyClass) return;
   }
 }
 
