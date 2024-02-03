@@ -1332,9 +1332,7 @@ class CustomSelect extends HTMLElement {
     }
 
     if (!modifyClass) return;
-    // Add or remove classes based on the condition
   }
-
 }
 
 customElements.define('custom-select', CustomSelect);
