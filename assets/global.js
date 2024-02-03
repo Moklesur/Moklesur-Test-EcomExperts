@@ -971,6 +971,7 @@ class VariantSelects extends HTMLElement {
         console.log('Test');
         this.setUnavailable();
       } else {
+        console.log('Test');
         this.toggleAddButton(true, '', true);
         this.setUnavailable();
       }
