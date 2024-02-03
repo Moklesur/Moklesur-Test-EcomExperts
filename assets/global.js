@@ -1297,14 +1297,11 @@ customElements.define('product-recommendations', ProductRecommendations);
 class CustomSelect extends HTMLElement {
   constructor() {
     super();
-    this.select = this.querySelector('select');
-  }
-
-  connectedCallback() {
-    this.select.value === '' && CustomSelect.disableCartButton();
+    CustomSelect.disableCartButton();
   }
 
   static disableCartButton() {
+    this.select = this.querySelector('select');
     const cartButton = document.querySelector('.js-add-cart');
     if (cartButton && !cartButton.hasAttribute('disabled')) {
       cartButton.setAttribute('disabled', '');
