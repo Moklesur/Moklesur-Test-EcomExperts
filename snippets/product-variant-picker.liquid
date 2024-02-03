@@ -36,7 +36,10 @@
           </div>
 
           {% if optionName contains 'Size' or optionName contains 'size'  %}
-            <custom-select data-section="{{ section.id }}">
+            <custom-select 
+              data-section="{{ section.id }}"
+              class="product-custom__select{% if optionName contains 'Size' or optionName contains 'size' %} js-product-custom__select{% endif %}"
+            >
               <select
                 name="id"
                 id="Variants-{{ section.id }}"
