@@ -74,8 +74,7 @@
         <img width="50" src="{{ selected_variant.image.src | img_url: 'small' }}" alt="{{ selected_variant.title }}" />
       {%- endif -%}
 
-      {{ value }}
-
+      <span class="visually-hidden">{{ value }}</span>
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>
   {%- elsif block.settings.picker_type == 'dropdown' -%}
