@@ -968,6 +968,7 @@ class VariantSelects extends HTMLElement {
 
     if (!this.currentVariant) {
       if(this.customSelect === '') {
+        console.log('Test');
         this.setUnavailable();
       } else {
         this.toggleAddButton(true, '', true);
