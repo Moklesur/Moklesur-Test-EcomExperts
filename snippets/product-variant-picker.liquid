@@ -52,8 +52,6 @@
                   assign product_form_id = 'product-form-' | append: section.id
                 -%}
 
-                <option disabled selected="selected" value>-- Unselected --</option>
-
                 {%- for value in option.values -%}
                   {%- liquid
                     assign option_disabled = true
