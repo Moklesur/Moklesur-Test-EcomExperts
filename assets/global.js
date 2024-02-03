@@ -1281,14 +1281,15 @@ class ProductRecommendations extends HTMLElement {
 
 customElements.define('product-recommendations', ProductRecommendations);
 
+// custom js
+// class CustomSelect extends HTMLElement {
+//   constructor() {
+//     super();
+//     this.addEventListener('change', this.onVariantChange)
+//   }
+//   onVariantChange(e){
+//     document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
+//   }
+// }
 
-class CustomSelect extends HTMLElement {
-  constructor() {
-    super();
-    this.addEventListener('change', this.onVariantChange)
-  }
-  onVariantChange(e){
-    document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
-  }
-}
-customElements.define('custom-select', CustomSelect)
+// customElements.define('custom-select', CustomSelect);
