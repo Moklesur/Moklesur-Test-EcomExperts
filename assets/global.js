@@ -1297,11 +1297,9 @@ customElements.define('product-recommendations', ProductRecommendations);
 class CustomSelect extends HTMLElement {
   constructor() {
     super();
-    this.addEventListener('change', this.onVariantChange)
+    this.select = this.querySelector('select');
   }
-  onVariantChange(e){
-    document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
-  }
+
 }
 
 customElements.define('custom-select', CustomSelect);
