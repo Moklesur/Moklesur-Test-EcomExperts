@@ -986,11 +986,11 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.select = this.querySelector('select');
+    this.variantSelected = !this.select.value === '';
     this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
   onVariantChange() {
-    const variantSelected = !this.select.value === '';
     this.updateOptions();
     this.updateMasterId();
     this.toggleAddButton(variantSelected, '', false);
