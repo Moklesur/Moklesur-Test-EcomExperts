@@ -952,6 +952,8 @@ class VariantSelects extends HTMLElement {
   }
 
   onVariantChange() {
+    this.customSelect = this.querySelector('.js-custom__select');
+
     this.updateOptions();
     this.updateMasterId();
     this.toggleAddButton(true, '', false);
@@ -959,6 +961,7 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
+    console.log(this.customSelect);
     console.log(this.currentVariant);
     console.log(this.currentVariant.title);
 
