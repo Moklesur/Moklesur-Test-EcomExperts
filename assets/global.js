@@ -953,6 +953,8 @@ class CustomSelect extends HTMLElement {
       this.select = select || this.querySelector('select');
       this.cartButton = document.querySelector('.js-add-cart');
       this.select.value === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+      console.log(this.select);
+      console.log(this.select).value;
     };
 
     this.disableCartButton();
