@@ -952,12 +952,28 @@ class CustomSelect extends HTMLElement {
     this.disableCartButton = function(select) {
       this.select = this.querySelector('select');
       this.cartButton = document.querySelector('.js-add-cart');
-      !this.cartButton.hasAttribute('disabled') ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
+      !this.cartButton.hasAttribute('disabled') ? this.toggleAddButton(true, '', false) : this.toggleAddButton(true, '', false);
     };
+
+    this.disableCartButton();
   }
 
-  connectedCallback() {
-    this.disableCartButton();
+  toggleAddButton(disable = true, text, modifyClass = true) {
+    const productForm = document.getElementById(`product-form-${this.dataset.section}`);
+    if (!productForm) return;
+    const addButton = productForm.querySelector('[name="add"]');
+    const addButtonText = productForm.querySelector('[name="add"] > span');
+    if (!addButton) return;
+
+    if (disable) {
+      addButton.setAttribute('disabled', 'disabled');
+      if (text) addButtonText.textContent = text;
+    } else {
+      addButton.removeAttribute('disabled');
+      addButtonText.textContent = window.variantStrings.addToCart;
+    }
+
+    if (!modifyClass) return;
   }
 }
 
