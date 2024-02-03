@@ -948,6 +948,7 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
+    const myCustomSelect = new CustomSelect();
     this.addEventListener('change', this.onVariantChange);
   }
 
@@ -969,6 +970,8 @@ class VariantSelects extends HTMLElement {
       this.renderProductInfo();
       this.updateShareUrl();
     }
+
+    myCustomSelect.disableCartButton();
   }
 
   updateOptions() {
