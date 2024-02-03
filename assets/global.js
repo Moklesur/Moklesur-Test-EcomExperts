@@ -951,28 +951,28 @@ class VariantSelects extends HTMLElement {
     this.addEventListener('change', this.onVariantChange);
   }
 
-  onVariantChange() {
-    this.updateOptions();
-    this.updateMasterId();
-    // this.toggleAddButton(true, '', false);
-    this.updatePickupAvailability();
-    this.removeErrorMessage();
-    this.updateVariantStatuses();
+  // onVariantChange() {
+  //   this.updateOptions();
+  //   this.updateMasterId();
+  //   this.toggleAddButton(true, '', false);
+  //   this.updatePickupAvailability();
+  //   this.removeErrorMessage();
+  //   this.updateVariantStatuses();
 
-    console.log(this.currentVariant);
-    console.log(this.currentVariant.title);
+  //   console.log(this.currentVariant);
+  //   console.log(this.currentVariant.title);
 
-    if (!this.currentVariant) {
-      // this.toggleAddButton(true, '', true);
-      this.setUnavailable();
-    } else {
-      this.updateMedia();
-      this.updateURL();
-      this.updateVariantInput();
-      this.renderProductInfo();
-      this.updateShareUrl();
-    }
-  }
+  //   if (!this.currentVariant) {
+  //     this.toggleAddButton(true, '', true);
+  //     this.setUnavailable();
+  //   } else {
+  //     this.updateMedia();
+  //     this.updateURL();
+  //     this.updateVariantInput();
+  //     this.renderProductInfo();
+  //     this.updateShareUrl();
+  //   }
+  // }
 
   updateOptions() {
     this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
