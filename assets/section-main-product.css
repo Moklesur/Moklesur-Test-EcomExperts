@@ -1606,5 +1606,5 @@ a.product__text {
 
 /* custom styles */
 .product .product-form__input .select__select {
-  box-shadow: 0 0 0 calc(.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground));
 }
