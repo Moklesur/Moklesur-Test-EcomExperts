@@ -1306,7 +1306,7 @@ class CustomSelect extends HTMLElement {
 
   disableCartBuy() {
     this.cartButton = document.querySelector('.js-add-cart');
-    this.cartButton.setAttribute('disabled', '');
+    !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
   }
 }
 
