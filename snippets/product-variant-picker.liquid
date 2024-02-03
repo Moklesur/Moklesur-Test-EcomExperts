@@ -38,12 +38,12 @@
           {% if optionName contains 'Size' or optionName contains 'size'  %}
             <custom-select 
               data-section="{{ section.id }}"
-              class="product-custom__select{% if optionName contains 'Size' or optionName contains 'size' %} js-product-custom__select{% endif %}"
+              class="product-custom__select"
             >
               <select
                 name="id"
                 id="Variants-{{ section.id }}"
-                class="select__select"
+                class="select__select{% if optionName contains 'Size' or optionName contains 'size' %} js-custom__select{% endif %}"
                 form="{{ product_form_id }}"
               >
                 {%- liquid
