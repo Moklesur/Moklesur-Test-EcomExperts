@@ -956,16 +956,12 @@ class VariantSelects extends HTMLElement {
 
     this.updateOptions();
     this.updateMasterId();
-    console.log('Button test 1');
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
-    console.log('Button test 2');
     this.customSelect === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
-
-    console.log(this.currentVariant.title);
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
