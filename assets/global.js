@@ -968,7 +968,7 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.customSelect = myCustomSelect;
-    this.addEventListener('change', this.onVariantChange);
+    this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
   onVariantChange() {
