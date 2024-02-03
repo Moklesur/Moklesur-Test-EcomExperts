@@ -971,6 +971,7 @@ class VariantSelects extends HTMLElement {
       this.updateMedia();
       this.updateURL();
       this.updateVariantInput();
+      // Disable add to cart button when custom select is unselected
       this.renderProductInfo.bind(this);
       this.updateShareUrl();
     }
