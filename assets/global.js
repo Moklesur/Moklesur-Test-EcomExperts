@@ -984,7 +984,6 @@ const myCustomSelect = new CustomSelect();
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.customSelect = myCustomSelect;
     this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
@@ -1006,8 +1005,6 @@ class VariantSelects extends HTMLElement {
       this.renderProductInfo();
       this.updateShareUrl();
     }
-
-    this.customSelect.disableCartButton();
   }
 
   updateOptions() {
