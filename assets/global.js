@@ -1297,17 +1297,20 @@ customElements.define('product-recommendations', ProductRecommendations);
 class CustomSelect extends HTMLElement {
   constructor() {
     super();
-    CustomSelect.disableCartButton();
+    this.select = this.querySelector('select');
+
+    // Define the disableCartButton method on the prototype inside the constructor
+    this.disableCartButton = function() {
+      this.cartButton = document.querySelector('.js-add-cart');
+      !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
+    };
   }
 
-  static disableCartButton() {
-    this.select = this.querySelector('select');
-    const cartButton = document.querySelector('.js-add-cart');
-    if (cartButton && !cartButton.hasAttribute('disabled')) {
-      cartButton.setAttribute('disabled', '');
-    }
+  connectedCallback() {
+    this.select.value === '' && this.disableCartButton();
   }
 }
 
 customElements.define('custom-select', CustomSelect);
+
 
