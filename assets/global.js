@@ -948,15 +948,14 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.select = this.querySelector('select');
-    this.variantSelected = this.select.value === '';
+    this.variantSelected = this.querySelector('select').value === '';
     this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.select.value === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+    this.variantSelected === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
@@ -971,7 +970,7 @@ class VariantSelects extends HTMLElement {
       this.renderProductInfo();
       this.updateShareUrl();
     }
-    console.log(this.select.value === '');
+
     console.log(this.variantSelected);
   }
 
