@@ -953,11 +953,11 @@ class VariantSelects extends HTMLElement {
 
   onVariantChange() {
     this.updateOptions();
-    // this.updateMasterId();
+    this.updateMasterId();
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
-    this.updateVariantStatuses();
+    // this.updateVariantStatuses();
 
     console.log(this.currentVariant);
     console.log(this.currentVariant.title);
