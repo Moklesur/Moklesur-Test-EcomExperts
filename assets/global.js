@@ -962,11 +962,11 @@ class CustomSelect extends HTMLElement {
 }
 
 customElements.define('custom-select', CustomSelect);
+const myCustomSelect = new CustomSelect();
 
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    const myCustomSelect = new CustomSelect();
     this.addEventListener('change', this.onVariantChange);
   }
 
