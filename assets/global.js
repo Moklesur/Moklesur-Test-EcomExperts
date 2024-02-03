@@ -1239,7 +1239,7 @@ class VariantRadios extends VariantSelects {
     const fieldsets = Array.from(this.querySelectorAll('fieldset'));
     this.options = fieldsets.map((fieldset) => {
       Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
-      console.log(this.variantSelected);
+      this.toggleAddButton(this.variantSelected, '', true);
     });
   }
 
