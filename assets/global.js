@@ -1167,11 +1167,9 @@ class VariantSelects extends HTMLElement {
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
       if (text) addButtonText.textContent = text;
-      console.log('Cart button disabled');
     } else {
       addButton.removeAttribute('disabled');
       addButtonText.textContent = window.variantStrings.addToCart;
-      console.log('Cart button enabled');
     }
 
     if (!modifyClass) return;
