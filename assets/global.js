@@ -1301,10 +1301,10 @@ class CustomSelect extends HTMLElement {
   }
 
   connectedCallback() {
-    this.select.value == '' && this.disableCartBuy();
+    this.select.value == '' && this.disableCartButton();
   }
 
-  disableCartBuy() {
+  disableCartButton() {
     this.cartButton = document.querySelector('.js-add-cart');
     !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
   }
