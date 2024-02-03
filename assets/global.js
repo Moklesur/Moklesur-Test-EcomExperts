@@ -952,7 +952,7 @@ class VariantSelects extends HTMLElement {
   }
 
   onVariantChange() {
-    this.customSelect = this.querySelector('.js-custom__select');
+    this.customSelect = this.querySelector('.js-custom__select').value;
 
     this.updateOptions();
     this.updateMasterId();
