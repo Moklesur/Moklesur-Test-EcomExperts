@@ -960,6 +960,7 @@ class VariantSelects extends HTMLElement {
     this.updateVariantStatuses();
 
     console.log(this.currentVariant);
+    console.log(this.currentVariant.title);
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
