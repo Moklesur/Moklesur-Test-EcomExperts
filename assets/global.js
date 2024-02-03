@@ -1279,20 +1279,20 @@ customElements.define('product-recommendations', ProductRecommendations);
 
 // customElements.define('custom-select', CustomSelect);
 
-class CustomSelect extends HTMLElement {
-  constructor() {
-    super();
+// class CustomSelect extends HTMLElement {
+//   constructor() {
+//     super();
 
-    this.disableCartButton = function(select) {
-      this.select = this.querySelector('select');
-      this.cartButton = document.querySelector('.js-add-cart');
-      this.select.value === '' ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
-    };
-  }
+//     this.disableCartButton = function(select) {
+//       this.select = this.querySelector('select');
+//       this.cartButton = document.querySelector('.js-add-cart');
+//       this.select.value === '' ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
+//     };
+//   }
 
-  connectedCallback() {
-    this.disableCartButton();
-  }
-}
+//   connectedCallback() {
+//     this.disableCartButton();
+//   }
+// }
 
-customElements.define('custom-select', CustomSelect);
+// customElements.define('custom-select', CustomSelect);
