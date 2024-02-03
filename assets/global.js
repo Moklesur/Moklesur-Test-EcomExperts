@@ -1222,6 +1222,7 @@ customElements.define('variant-selects', VariantSelects);
 class VariantRadios extends VariantSelects {
   constructor() {
     super();
+    this.variantSelected = this.querySelector('select').value === '';
   }
 
   setInputAvailability(listOfOptions, listOfAvailableOptions) {
