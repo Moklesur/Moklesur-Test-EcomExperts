@@ -952,7 +952,8 @@ class CustomSelect extends HTMLElement {
     this.disableCartButton = function(select) {
       this.select = this.querySelector('select');
       this.cartButton = document.querySelector('.js-add-cart');
-      this.cartButton.hasAttribute('disabled') ? this.toggleAddButton(false, '', false) : this.toggleAddButton(true, '', false);
+      this.toggleAddButton(true, '', false)
+      // this.cartButton.hasAttribute('disabled') ? this.toggleAddButton(false, '', false) : this.toggleAddButton(true, '', false);
     };
 
     this.disableCartButton();
