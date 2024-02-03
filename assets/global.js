@@ -990,7 +990,7 @@ class VariantSelects extends HTMLElement {
       this.updateShareUrl();
     }
 
-    myCustomSelect.disableCartButton();
+    this.customSelect.disableCartButton();
   }
 
   updateOptions() {
