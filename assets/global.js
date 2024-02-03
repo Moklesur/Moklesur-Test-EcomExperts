@@ -955,13 +955,13 @@ class VariantSelects extends HTMLElement {
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.variantSelected === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+    this.variantSelected ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
     if (!this.currentVariant) {
-      this.variantSelected === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(true, '', true);
+      this.variantSelected ? this.toggleAddButton(true, '', false) : this.toggleAddButton(true, '', true);
       this.setUnavailable();
     } else {
       this.updateMedia();
