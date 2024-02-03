@@ -1146,7 +1146,7 @@ class VariantSelects extends HTMLElement {
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
         this.toggleAddButton(
-          addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true,
+          addButtonUpdated || this.customSelect === '' ? addButtonUpdated.hasAttribute('disabled') : true,
           window.variantStrings.soldOut
         );
 
