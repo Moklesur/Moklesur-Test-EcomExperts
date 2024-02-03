@@ -1298,6 +1298,7 @@ class CustomSelect extends HTMLElement {
   constructor() {
     super();
     this.select = this.querySelector('select');
+    this.cartButton = document.querySelector('.js-add-cart');
   }
 
   connectedCallback() {
@@ -1305,7 +1306,6 @@ class CustomSelect extends HTMLElement {
   }
 
   disableCartBuy() {
-
   }
 }
 
