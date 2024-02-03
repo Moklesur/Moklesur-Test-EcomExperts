@@ -1300,6 +1300,9 @@ class CustomSelect extends HTMLElement {
     this.select = this.querySelector('select');
   }
 
+  connectedCallback() {
+
+  }
 }
 
 customElements.define('custom-select', CustomSelect);
