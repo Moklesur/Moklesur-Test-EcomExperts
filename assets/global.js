@@ -963,7 +963,7 @@ class VariantSelects extends HTMLElement {
     console.log(this.currentVariant.title);
 
     if (!this.currentVariant) {
-      this.toggleAddButton(true, '', true);
+      // this.toggleAddButton(true, '', true);
       this.setUnavailable();
     } else {
       this.updateMedia();
