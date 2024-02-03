@@ -948,20 +948,19 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.variantSelected = this.querySelector('select').value === '';
     this.addEventListener('change', this.onVariantChange.bind(this));
   }
 
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(this.variantSelected, '', false);
+    this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
     if (!this.currentVariant) {
-      this.toggleAddButton(this.variantSelected, '', true);
+      this.toggleAddButton(true, '', true);
       this.setUnavailable();
     } else {
       this.updateMedia();
@@ -970,8 +969,6 @@ class VariantSelects extends HTMLElement {
       this.renderProductInfo();
       this.updateShareUrl();
     }
-
-    console.log(this.variantSelected);
   }
 
   updateOptions() {
