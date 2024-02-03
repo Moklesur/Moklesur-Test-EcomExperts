@@ -36,7 +36,7 @@
           </div>
 
           {% if optionName contains 'Size' or optionName contains 'size'  %}
-            <custom-select>
+            <custom-select data-section="{{ section.id }}">
               <select
                 name="id"
                 id="Variants-{{ section.id }}"
