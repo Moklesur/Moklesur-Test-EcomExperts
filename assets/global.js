@@ -1008,6 +1008,8 @@ class VariantSelects extends HTMLElement {
       this.renderProductInfo();
       this.updateShareUrl();
     }
+    console.log(this.select.value === '');
+    console.log(this.variantSelected);
   }
 
   updateOptions() {
