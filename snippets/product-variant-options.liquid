@@ -59,7 +59,7 @@
         class="disabled"
       {% endif %}
     >
-    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" title="{{ value }}">
 
       {% comment %}
       the code work for Color variants
@@ -74,7 +74,7 @@
         <img width="50" src="{{ selected_variant.image.src | img_url: 'small' }}" alt="{{ selected_variant.title }}" />
       {%- endif -%}
 
-      {{ value -}}
+      {{ value }}
 
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>
