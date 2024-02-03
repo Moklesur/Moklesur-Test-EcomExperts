@@ -36,7 +36,7 @@
           </div>
 
           {% if optionName contains 'Size' or optionName contains 'size'  %}
-            <custom-select>
+            <custom-select data-section="{{ section.id }}">
               <select
                 name="id"
                 id="Variants-{{ section.id }}"
@@ -51,6 +51,8 @@
 
                   assign product_form_id = 'product-form-' | append: section.id
                 -%}
+
+                <option disabled selected="selected" value>-- Unselected --</option>
 
                 {%- for value in option.values -%}
                   {%- liquid
@@ -84,6 +86,7 @@
               </select>
             </custom-select>
           {% endif %}
+
         </fieldset>
       {%- endfor -%}
       <script type="application/json">
