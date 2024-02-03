@@ -971,7 +971,8 @@ class VariantSelects extends HTMLElement {
       this.updateMedia();
       this.updateURL();
       this.updateVariantInput();
-      // Disable add to cart button when custom select is unselected - from inside renderProductInfo()
+      // Disable add to cart button when custom select is unselected
+      // Look for 'this.toggleAddButton' to update the requirements of the statement
       this.renderProductInfo.bind(this);
       this.updateShareUrl();
     }
@@ -1143,7 +1144,6 @@ class VariantSelects extends HTMLElement {
         if (inventoryDestination) inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
-
         this.toggleAddButton(
           addButtonUpdated || this.customSelect === '' ? addButtonUpdated.hasAttribute('disabled') : true,
           window.variantStrings.soldOut
