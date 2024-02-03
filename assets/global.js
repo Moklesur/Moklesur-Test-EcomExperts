@@ -1286,7 +1286,7 @@ class CustomSelect extends HTMLElement {
   constructor() {
     super();
 
-    this.disableCartButton = function(select) {
+    this.disableCartButton = function() {
       this.select = this.querySelector('select');
       this.cartButton = document.querySelector('.js-add-cart');
       this.select.value === '' ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
