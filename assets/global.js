@@ -967,6 +967,7 @@ const myCustomSelect = new CustomSelect();
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
+    this.customSelect = myCustomSelect;
     this.addEventListener('change', this.onVariantChange);
   }
 
