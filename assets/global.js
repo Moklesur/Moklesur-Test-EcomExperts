@@ -968,14 +968,8 @@ class VariantSelects extends HTMLElement {
     console.log(this.currentVariant.title);
 
     if (!this.currentVariant) {
-      if(this.customSelect === '') {
-        console.log('Test 1');
-        this.setUnavailable();
-      } else {
-        console.log('Test 2');
-        this.toggleAddButton(true, '', true);
-        this.setUnavailable();
-      }
+      this.toggleAddButton(true, '', true);
+      this.setUnavailable();
     } else {
       this.updateMedia();
       this.updateURL();
