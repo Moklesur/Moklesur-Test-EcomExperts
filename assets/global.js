@@ -1298,8 +1298,8 @@ class CustomSelect extends HTMLElement {
   constructor() {
     super();
 
-    this.disableCartButton = function() {
-      this.select = this.querySelector('select');
+    this.disableCartButton = function(select) {
+      this.select = select || this.querySelector('select');
       this.cartButton = document.querySelector('.js-add-cart');
       !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
     };
@@ -1311,5 +1311,3 @@ class CustomSelect extends HTMLElement {
 }
 
 customElements.define('custom-select', CustomSelect);
-
-
