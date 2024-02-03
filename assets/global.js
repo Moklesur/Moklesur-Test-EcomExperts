@@ -945,48 +945,49 @@ class SlideshowComponent extends SliderComponent {
 
 customElements.define('slideshow-component', SlideshowComponent);
 
-class CustomSelect extends HTMLElement {
-  constructor() {
-    super();
+// class CustomSelect extends HTMLElement {
+//   constructor() {
+//     super();
 
-    this.disableCartButton = function() {
-      this.cartButton = document.querySelector('.js-add-cart');
-      (this.select.value == '' || this.select.value == null) ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
-      console.log(this.select);
-      console.log(this.select.value);
-    };
+//     this.disableCartButton = function() {
+//       this.cartButton = document.querySelector('.js-add-cart');
+//       (this.select.value == '' || this.select.value == null) ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+//       console.log(this.select);
+//       console.log(this.select.value);
+//     };
 
-    this.disableCartButton();
-  }
+//     this.disableCartButton();
+//   }
 
-  toggleAddButton(disable = true, text, modifyClass = true) {
-    const productForm = document.getElementById(`product-form-${this.dataset.section}`);
-    if (!productForm) return;
-    const addButton = productForm.querySelector('[name="add"]');
-    const addButtonText = productForm.querySelector('[name="add"] > span');
-    if (!addButton) return;
+//   toggleAddButton(disable = true, text, modifyClass = true) {
+//     const productForm = document.getElementById(`product-form-${this.dataset.section}`);
+//     if (!productForm) return;
+//     const addButton = productForm.querySelector('[name="add"]');
+//     const addButtonText = productForm.querySelector('[name="add"] > span');
+//     if (!addButton) return;
 
-    if (disable) {
-      addButton.setAttribute('disabled', 'disabled');
-      if (text) addButtonText.textContent = text;
-    } else {
-      addButton.removeAttribute('disabled');
-      addButtonText.textContent = text || window.variantStrings.addToCart;
-    }
+//     if (disable) {
+//       addButton.setAttribute('disabled', 'disabled');
+//       if (text) addButtonText.textContent = text;
+//     } else {
+//       addButton.removeAttribute('disabled');
+//       addButtonText.textContent = text || window.variantStrings.addToCart;
+//     }
 
-    if (!modifyClass) return;
-    // Add or remove classes based on the condition
-  }
-}
+//     if (!modifyClass) return;
+//     // Add or remove classes based on the condition
+//   }
+// }
 
-customElements.define('custom-select', CustomSelect);
-const myCustomSelect = new CustomSelect();
+// customElements.define('custom-select', CustomSelect);
+// const myCustomSelect = new CustomSelect();
 
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.select = this.querySelector('select');
     this.addEventListener('change', this.onVariantChange.bind(this));
+    console.log(this.select)
   }
 
   onVariantChange() {
