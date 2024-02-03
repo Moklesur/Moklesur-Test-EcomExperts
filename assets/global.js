@@ -948,7 +948,7 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.addEventListener('change', this.onVariantChange.bind(this));
+    this.addEventListener('change', this.onVariantChange);
   }
 
   onVariantChange() {
@@ -973,7 +973,6 @@ class VariantSelects extends HTMLElement {
 
   updateOptions() {
     this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
-    console.log(this.options);
   }
 
   updateMasterId() {
@@ -986,23 +985,9 @@ class VariantSelects extends HTMLElement {
     });
   }
 
-  updateMedia(e) {
+  updateMedia() {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;
-
-    // Get the current radio button value
-    const currentVariant = this.currentVariant.featured_media.alt;
-    // Get all divs
-    const thumbnailList = document.querySelectorAll('.thumbnail-list__item');
-    // Hide all divs
-    thumbnailList.forEach(div => {
-      div.classList.add('hide');
-    });
-    // Show the div corresponding to the selected radio button
-    const currentVariantDiv = document.querySelectorAll(`[data-img-alt="${currentVariant}"]`);
-    currentVariantDiv.forEach(div => {
-      div.classList.remove('hide');
-    });
 
     const mediaGalleries = document.querySelectorAll(`[id^="MediaGallery-${this.dataset.section}"]`);
     mediaGalleries.forEach((mediaGallery) =>
@@ -1016,8 +1001,6 @@ class VariantSelects extends HTMLElement {
   }
 
   updateURL() {
-    // stop product url change when select any variable
-    return;
     if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
     window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
   }
@@ -1235,9 +1218,7 @@ class VariantRadios extends VariantSelects {
   updateOptions() {
     const fieldsets = Array.from(this.querySelectorAll('fieldset'));
     this.options = fieldsets.map((fieldset) => {
-      // return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
-      Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
-      console.log(Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value);
+      return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
     });
   }
 }
