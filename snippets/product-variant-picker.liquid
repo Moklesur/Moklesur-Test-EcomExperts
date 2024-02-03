@@ -23,14 +23,14 @@
     >
       {%- for option in product.options_with_values -%}
         {% assign optionName = option.name %}
-        <fieldset class="js product-form__input">
+        <fieldset class="js product-form__input{% if optionName contains 'Size' or optionName contains 'size' %} js-product-form__size{% endif %}">
           <legend class="form__label">{{ option.name }}</legend>
 
           <div
-            {% if optionName contains 'Size' or optionName contains 'size'  %}
+            {% if optionName contains 'Size' or optionName contains 'size' %}
               class="js-size-option"
               style="display: none"
-            {%  endif %}
+            {% endif %}
           >
             {% render 'product-variant-options', product: product, option: option, block: block %}
           </div>
