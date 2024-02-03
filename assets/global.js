@@ -1306,6 +1306,7 @@ class CustomSelect extends HTMLElement {
   }
 
   disableCartBuy() {
+    this.cartButton.setAttribute('disabled', '');
   }
 }
 
