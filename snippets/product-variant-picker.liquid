@@ -31,7 +31,6 @@
             {% render 'product-variant-options', product: product, option: option, block: block %}
           </div>
 
-
           {% if optionName contains 'Size' or optionName contains 'size'  %}
             <custom-select>
               <select
@@ -71,10 +70,10 @@
                     endfor
                   -%}
                   <option
-                          value="{{ value | escape }}"
-                          {% if option.selected_value == value %}
-                            selected="selected"
-                          {% endif %}
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}
+                      selected="selected"
+                    {% endif %}
                   >
                     {% if option_disabled -%}
                       {{- 'products.product.value_unavailable' | t: option_value: value -}}
