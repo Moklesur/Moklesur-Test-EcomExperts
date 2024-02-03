@@ -1309,29 +1309,21 @@ class CustomSelect extends HTMLElement {
 
   toggleAddButton(disable = true, text, modifyClass = true) {
     const productForm = document.getElementById(`product-form-${this.dataset.section}`);
-    if (!productForm) {
-      console.log("Product form not found");
-      return;
-    }
-
+    if (!productForm) return;
     const addButton = productForm.querySelector('[name="add"]');
     const addButtonText = productForm.querySelector('[name="add"] > span');
-    if (!addButton) {
-      console.log("Add button not found");
-      return;
-    }
+    if (!addButton) return;
 
     if (disable) {
-      console.log("Disabling button");
       addButton.setAttribute('disabled', 'disabled');
       if (text) addButtonText.textContent = text;
     } else {
-      console.log("Enabling button");
       addButton.removeAttribute('disabled');
       addButtonText.textContent = text || window.variantStrings.addToCart;
     }
 
     if (!modifyClass) return;
+    // Add or remove classes based on the condition
   }
 }
 
