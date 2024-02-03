@@ -1298,15 +1298,15 @@ class CustomSelect extends HTMLElement {
   constructor() {
     super();
     this.select = this.querySelector('select');
+
+    this.disableCartButton = function() {
+      this.cartButton = document.querySelector('.js-add-cart');
+      !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
+    };
   }
 
   connectedCallback() {
     this.select.value == '' && this.disableCartButton();
-  }
-
-  disableCartButton() {
-    this.cartButton = document.querySelector('.js-add-cart');
-    !this.cartButton.hasAttribute('disabled') && this.cartButton.setAttribute('disabled', '');
   }
 }
 
