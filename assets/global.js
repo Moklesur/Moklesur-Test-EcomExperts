@@ -1295,6 +1295,11 @@ class CustomSelect extends HTMLElement {
 
   connectedCallback() {
     this.disableCartButton();
+    this.addEventListener('change', this.onVariantChange);
+  }
+
+  onVariantChange(e) {
+    document.querySelector(".js-size-option input[value='" + e.target.value + "']").click();
   }
 }
 
