@@ -1293,3 +1293,15 @@ customElements.define('product-recommendations', ProductRecommendations);
 // }
 
 // customElements.define('custom-select', CustomSelect);
+
+class CustomSelect extends HTMLElement {
+  constructor() {
+    super();
+    this.addEventListener('change', this.onVariantChange)
+  }
+  onVariantChange(e){
+    document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
+  }
+}
+
+customElements.define('custom-select', CustomSelect);
