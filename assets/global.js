@@ -961,6 +961,7 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
+    // Disable add to cart button when custom select is unselected
     this.customSelect === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
 
     if (!this.currentVariant) {
