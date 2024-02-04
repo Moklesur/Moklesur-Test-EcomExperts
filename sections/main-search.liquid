@@ -264,7 +264,7 @@
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
- {% unless item.tags contains "hide-product" %}
+
                   <li
                     class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                     {% if settings.animations_reveal_on_scroll %}
@@ -274,8 +274,6 @@
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
                         {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
-
-
                         {% render 'card-product',
                           card_product: item,
                           media_aspect_ratio: section.settings.image_ratio,
@@ -285,7 +283,6 @@
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load
                         %}
-
                       {%- when 'article' -%}
                         {% render 'article-card',
                           article: item,
@@ -320,7 +317,6 @@
                         </div>
                     {%- endcase -%}
                   </li>
- {% endunless %}
                 {%- endfor -%}
               </ul>
               {%- if paginate.pages > 1 -%}

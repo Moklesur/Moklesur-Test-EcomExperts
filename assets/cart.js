@@ -167,16 +167,6 @@ class CartItems extends HTMLElement {
           trapFocus(cartDrawerWrapper, document.querySelector('.cart-item__name'));
         }
 
-        console.log(parsedState)
-
-        // geting product title for cart
-        const cartItemIds = parsedState.items.map(item => item.id);
-        // automatically remove Soft Winter Jacket product
-        if(!cartItemIds.includes(45020005630204)){
-          document.getElementById('hide-product-removed-js').click();
-        }
-
-
         publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cartData: parsedState, variantId: variantId });
       })
       .catch(() => {

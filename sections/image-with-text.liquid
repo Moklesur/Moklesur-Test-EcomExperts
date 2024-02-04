@@ -98,6 +98,34 @@
                       {{ block.settings.button_label | escape }}
                     </a>
                   {%- endif -%}
+                {% when 'richtext_col' %}
+                  <div class="richtext_col--grid grid grid-2-col">
+                    {% for i in (1..2) %}
+                      {% assign richtext = 'richtext_' | append: i %}
+                      {% if block.settings[richtext] != blank %}
+                        <div class="grid__item rte">
+                          {{ block.settings[richtext] }}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% when 'textarea_col' %}
+                  <div class="textarea_col--grid grid grid-2-col">
+                    {% for i in (1..2) %}
+                      {% assign textarea = 'textarea_' | append: i %}
+                      {% assign textareaList = block.settings[textarea] | newline_to_br %}
+                      {% assign textareaListArray = textareaList | split: '<br />' %}
+                      {% if block.settings[textarea] != blank %}
+                        <div class="grid__item rte">
+                          <ul>
+                            {% for listItem in textareaListArray %}
+                              <li>{{ listItem }}</li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
               {%- endcase -%}
             {%- endfor -%}
           </div>
@@ -457,6 +485,38 @@
           "id": "button_style_secondary",
           "default": false,
           "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
+        }
+      ]
+    },
+    {
+      "type": "richtext_col",
+      "name": "Richtext Columns",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "richtext_1",
+          "label": "Richtext 1"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext_2",
+          "label": "Richtext 2"
+        }
+      ]
+    },
+    {
+      "type": "textarea_col",
+      "name": "Textarea Columns",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "textarea_1",
+          "label": "Textarea 1"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea_2",
+          "label": "Textarea 2"
         }
       ]
     }

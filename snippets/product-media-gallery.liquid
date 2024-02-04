@@ -70,6 +70,7 @@
           id="Slide-{{ section.id }}-{{ featured_media.id }}{{ id_append }}"
           class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} product__media-item--variant{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
           data-media-id="{{ section.id }}-{{ featured_media.id }}"
+          aria-label="{{ featured_media.alt }}"
         >
           {%- assign media_position = 1 -%}
           {% render 'product-thumbnail',
@@ -94,6 +95,7 @@
             id="Slide-{{ section.id }}-{{ media.id }}{{ id_append }}"
             class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
             data-media-id="{{ section.id }}-{{ media.id }}"
+            aria-label="{{ media.alt }}"
           >
             {%- liquid
               assign media_position = media_position | default: 0 | plus: 1
@@ -204,11 +206,8 @@
             assign media_index = media_index | plus: 1
           -%}
           <li
-                  data-img-alt="{{ featured_media.alt | lowercase }}"
             id="Slide-Thumbnails-{{ section.id }}-0{{ id_append }}"
-            class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and
-            variant_images
-            contains featured_media.src %} thumbnail-list_item--variant{% endif %}"
+            class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains featured_media.src %} thumbnail-list_item--variant{% endif %}"
             data-target="{{ section.id }}-{{ featured_media.id }}"
             data-media-position="{{ media_index }}"
           >
@@ -237,10 +236,6 @@
           </li>
         {%- endif -%}
         {%- for media in product.media -%}
-
-
-
-
           {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
             {%- liquid
               capture media_index
@@ -255,19 +250,8 @@
               assign media_index = media_index | plus: 1
             -%}
             <li
-
-
-
-
-                    data-img-alt="{{ media.alt | lowercase }}"
-
               id="Slide-Thumbnails-{{ section.id }}-{{ forloop.index }}{{ id_append }}"
-              class="
-              {%  if product.selected_or_first_available_variant.featured_media.alt !=  media.alt  %}
-              hide
-{%  endif  %}
-              thumbnail-list__item slider__slide{% if section.settings.hide_variants and
-              variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
+              class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
               data-target="{{ section.id }}-{{ media.id }}"
               data-media-position="{{ media_index }}"
             >

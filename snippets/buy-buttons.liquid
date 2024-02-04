@@ -14,13 +14,13 @@
 {% liquid
   assign selectSize = false
   for option in product.options_with_values
-    if optionName contains 'Size' or optionName contains 'size'
+    if option.name contains 'Size' or option.name contains 'size'
       assign selectSize = true
     endif
   endfor
 %}
 
-<div {{ block.shopify_attributes }}>
+<div {{ block.shopify_attributes }} class="product-form__buy">
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false

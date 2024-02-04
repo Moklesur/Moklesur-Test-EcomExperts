@@ -948,21 +948,26 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
+    this.colorInputs = this.querySelectorAll('.js-color-option input[type="radio"]');
+    this.colorImages = document.querySelectorAll('.product__media-item');
+
+    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
     this.addEventListener('change', this.onVariantChange);
   }
 
   onVariantChange() {
-    this.customSelect = this.querySelector('.js-custom__select').value;
-
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(true, '', false);
+    this.toggleAddButton(!this.currentVariant.available, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
+    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
+
     // Disable add to cart button when custom select is unselected
-    this.customSelect === '' ? this.toggleAddButton(true, '', false) : this.toggleAddButton(false, '', false);
+    this.customSelect = this.querySelector('.js-custom__select');
+    if(this.customSelect && this.customSelect.value === '') this.toggleAddButton(true, '', false);
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
@@ -978,9 +983,19 @@ class VariantSelects extends HTMLElement {
     }
   }
 
+  getCheckedColorInput() {
+    return Array.from(this.colorInputs).find(input => input.checked);
+  }
+
+  updateImages(event) {
+    this.colorImages.forEach((color) => {
+      color.classList.add('product__media-item--variant');
+      color.getAttribute('aria-label') === event && color.classList.remove('product__media-item--variant');
+    });
+  }
+
   updateOptions() {
     this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
-    console.log(this.options);
   }
 
   updateMasterId() {
@@ -1144,10 +1159,7 @@ class VariantSelects extends HTMLElement {
         if (inventoryDestination) inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
-        this.toggleAddButton(
-          addButtonUpdated || this.customSelect === '' ? addButtonUpdated.hasAttribute('disabled') : true,
-          window.variantStrings.soldOut
-        );
+        this.customSelect ? this.toggleAddButton(addButtonUpdated || this.customSelect.value === '' ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut) : this.toggleAddButton(addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut);
 
         publish(PUB_SUB_EVENTS.variantChange, {
           data: {

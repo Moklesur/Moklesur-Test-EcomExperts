@@ -22,13 +22,20 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        {% assign optionName = option.name %}
+        {% liquid
+          assign optionColor = false
+          assign optionName = option.name
+          assign galleryLayout = section.settings.gallery_layout
+          if optionName contains 'Color' or optionName contains 'color'
+            assign optionColor = true
+          endif
+        %}
         <fieldset class="js product-form__input">
           <legend class="form__label">{{ option.name }}</legend>
 
           <div
+            class="product-form__option{% if galleryLayout == 'stacked' or galleryLayout == 'columns' and optionColor %} js-color-option{% endif %}{% if optionName contains 'Size' or optionName contains 'size' %} js-size-option{% endif %}"
             {% if optionName contains 'Size' or optionName contains 'size' %}
-              class="js-size-option"
               style="display: none"
             {% endif %}
           >
@@ -36,14 +43,14 @@
           </div>
 
           {% if optionName contains 'Size' or optionName contains 'size'  %}
-            <custom-select 
+            <custom-select
               data-section="{{ section.id }}"
               class="product-custom__select"
             >
               <select
                 name="id"
                 id="Variants-{{ section.id }}"
-                class="select__select{% if optionName contains 'Size' or optionName contains 'size' %} js-custom__select{% endif %}"
+                class="select__select{% if optionName contains 'Size' or optionName contains 'size' %} js-custom__select{% endif %} {{ option.selected_value }}"
                 form="{{ product_form_id }}"
               >
                 {%- liquid
