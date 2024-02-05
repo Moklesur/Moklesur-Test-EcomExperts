@@ -948,10 +948,7 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.colorInputs = this.querySelectorAll('.js-color-option input[type="radio"]');
-    this.colorImages = document.querySelectorAll('.product__media-item');
 
-    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
     this.addEventListener('change', this.onVariantChange);
   }
 
