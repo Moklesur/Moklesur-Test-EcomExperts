@@ -948,26 +948,16 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.colorInputs = this.querySelectorAll('.js-color-option input[type="radio"]');
-    this.colorImages = document.querySelectorAll('.product__media-item');
-
-    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
     this.addEventListener('change', this.onVariantChange);
   }
 
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(!this.currentVariant.available, '', false);
+    this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
-
-    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
-
-    // Disable add to cart button when custom select is unselected
-    this.customSelect = this.querySelector('.js-custom__select');
-    if(this.customSelect && this.customSelect.value === '') this.toggleAddButton(true, '', false);
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
@@ -976,22 +966,9 @@ class VariantSelects extends HTMLElement {
       this.updateMedia();
       this.updateURL();
       this.updateVariantInput();
-      // Disable add to cart button when custom select is unselected
-      // Look for 'this.toggleAddButton' to update the requirements of the first boolean variable
-      this.renderProductInfo.bind(this);
+      this.renderProductInfo();
       this.updateShareUrl();
     }
-  }
-
-  getCheckedColorInput() {
-    return Array.from(this.colorInputs).find(input => input.checked);
-  }
-
-  updateImages(event) {
-    this.colorImages.forEach((color) => {
-      color.classList.add('product__media-item--variant');
-      color.getAttribute('aria-label') === event && color.classList.remove('product__media-item--variant');
-    });
   }
 
   updateOptions() {
@@ -1008,9 +985,23 @@ class VariantSelects extends HTMLElement {
     });
   }
 
-  updateMedia() {
+  updateMedia(e) {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;
+
+    // Get the current radio button value
+    const currentVariant = this.currentVariant.featured_media.alt;
+    // Get all divs
+    const thumbnailList = document.querySelectorAll('.thumbnail-list__item');
+    // Hide all divs
+    thumbnailList.forEach(div => {
+      div.classList.add('hide');
+    });
+    // Show the div corresponding to the selected radio button
+    const currentVariantDiv = document.querySelectorAll(`[data-img-alt="${currentVariant}"]`);
+    currentVariantDiv.forEach(div => {
+      div.classList.remove('hide');
+    });
 
     const mediaGalleries = document.querySelectorAll(`[id^="MediaGallery-${this.dataset.section}"]`);
     mediaGalleries.forEach((mediaGallery) =>
@@ -1024,6 +1015,7 @@ class VariantSelects extends HTMLElement {
   }
 
   updateURL() {
+    // stop product url change when select any variable
     return;
     if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
     window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
@@ -1160,7 +1152,10 @@ class VariantSelects extends HTMLElement {
         if (inventoryDestination) inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
-        this.customSelect ? this.toggleAddButton(addButtonUpdated || this.customSelect.value === '' ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut) : this.toggleAddButton(addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut);
+        this.toggleAddButton(
+          addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true,
+          window.variantStrings.soldOut
+        );
 
         publish(PUB_SUB_EVENTS.variantChange, {
           data: {
@@ -1286,38 +1281,14 @@ class ProductRecommendations extends HTMLElement {
 
 customElements.define('product-recommendations', ProductRecommendations);
 
-// custom js
-// class CustomSelect extends HTMLElement {
-//   constructor() {
-//     super();
-//     this.addEventListener('change', this.onVariantChange)
-//   }
-//   onVariantChange(e){
-//     document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
-//   }
-// }
-
-// customElements.define('custom-select', CustomSelect);
 
 class CustomSelect extends HTMLElement {
   constructor() {
     super();
-
-    this.disableCartButton = function() {
-      this.select = this.querySelector('select');
-      this.cartButton = document.querySelector('.js-add-cart');
-      this.select.value === '' ? this.cartButton.setAttribute('disabled', '') : this.cartButton.removeAttribute('disabled');
-    };
+    this.addEventListener('change', this.onVariantChange)
   }
-
-  connectedCallback() {
-    this.disableCartButton();
-    this.addEventListener('change', this.onVariantChange);
-  }
-
-  onVariantChange(e) {
-    document.querySelector(".js-size-option input[value='" + e.target.value + "']").click();
+  onVariantChange(e){
+    document.querySelector(".size-option-js input[value='" + e.target.value + "']").click();
   }
 }
-
-customElements.define('custom-select', CustomSelect);
+customElements.define('custom-select', CustomSelect)
