@@ -960,11 +960,7 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
-    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
-
-    // Disable add to cart button when custom select is unselected
-    this.customSelect = this.querySelector('.js-custom__select');
-    if(this.customSelect && this.customSelect.value === '') this.toggleAddButton(true, '', false);
+  
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
