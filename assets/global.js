@@ -1160,7 +1160,7 @@ class VariantSelects extends HTMLElement {
         if (inventoryDestination) inventoryDestination.classList.toggle('hidden', inventorySource.innerText === '');
 
         const addButtonUpdated = html.getElementById(`ProductSubmitButton-${sectionId}`);
-        this.customSelect ? this.toggleAddButton(addButtonUpdated || this.customSelect.value === '' ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut) : this.toggleAddButton(addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut);
+        //this.customSelect ? this.toggleAddButton(addButtonUpdated || this.customSelect.value === '' ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut) : this.toggleAddButton(addButtonUpdated ? addButtonUpdated.hasAttribute('disabled') : true, window.variantStrings.soldOut);
 
         publish(PUB_SUB_EVENTS.variantChange, {
           data: {
