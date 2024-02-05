@@ -948,7 +948,10 @@ customElements.define('slideshow-component', SlideshowComponent);
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
+    this.colorInputs = this.querySelectorAll('.js-color-option input[type="radio"]');
+    this.colorImages = document.querySelectorAll('.product__media-item');
 
+    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
     this.addEventListener('change', this.onVariantChange);
   }
 
@@ -960,7 +963,11 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
-  
+    (this.colorInputs.length != 0 && this.colorImages.length != 0) && this.updateImages(this.getCheckedColorInput().value);
+
+    // Disable add to cart button when custom select is unselected
+    this.customSelect = this.querySelector('.js-custom__select');
+    if(this.customSelect && this.customSelect.value === '') this.toggleAddButton(true, '', false);
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
