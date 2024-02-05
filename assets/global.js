@@ -1320,4 +1320,4 @@ class CustomSelect extends HTMLElement {
   }
 }
 
-//customElements.define('custom-select', CustomSelect);
+customElements.define('custom-select', CustomSelect);
